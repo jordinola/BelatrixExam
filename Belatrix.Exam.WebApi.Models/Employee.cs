@@ -8,8 +8,8 @@ namespace Belatrix.Exam.WebApi.Models
     {
         public Employee()
         {
-            Assigned = new HashSet<Employee>();
             Customers = new HashSet<Customer>();
+            Employees = new HashSet<Employee>();
         }
 
         public int EmployeeId { get; set; }
@@ -29,7 +29,7 @@ namespace Belatrix.Exam.WebApi.Models
         public string Email { get; set; }
 
         public Employee Leader { get; set; }
-        public ICollection<Employee> Assigned { get; set; }
         public ICollection<Customer> Customers { get; set; }
+        public ICollection<Employee> Employees { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Belatrix.Exam.WebApi.Models;
+using Belatrix.Exam.WebApi.Repository.MySql.Configurations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,17 @@ namespace Belatrix.Exam.WebApi.Repository.MySql
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //apply configs
+            modelBuilder.ApplyConfiguration(new AlbumConfig());
+            modelBuilder.ApplyConfiguration(new ArtistConfig());
+            modelBuilder.ApplyConfiguration(new CustomerConfig());
+            modelBuilder.ApplyConfiguration(new EmployeeConfig());
+            modelBuilder.ApplyConfiguration(new GenreConfig());
+            modelBuilder.ApplyConfiguration(new InvoiceConfig());
+            modelBuilder.ApplyConfiguration(new InvoiceLineConfig());
+            modelBuilder.ApplyConfiguration(new MediaTypeConfig());
+            modelBuilder.ApplyConfiguration(new PlaylistConfig());
+            modelBuilder.ApplyConfiguration(new PlaylistTrackConfig());
+            modelBuilder.ApplyConfiguration(new TrackConfig());
         }
     }
 }
