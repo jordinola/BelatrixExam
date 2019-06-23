@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Belatrix.Exam.WebApi", "Belatrix.Exam.WebApi\Belatrix.Exam.WebApi.csproj", "{061A19F9-8E96-496B-864D-4971D11B8276}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Belatrix.Exam.WebApi.Models", "Belatrix.Exam.WebApi.Models\Belatrix.Exam.WebApi.Models.csproj", "{144D73FC-D500-4EEB-9E70-40599E96672E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Belatrix.Exam.WebApi.Repository", "Belatrix.Exam.WebApi.Repository\Belatrix.Exam.WebApi.Repository.csproj", "{4B76C793-A454-467B-9DB8-8AA53FE6CD51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Belatrix.Exam.WebApi.MySql", "Belatrix.Exam.WebApi.MySql\Belatrix.Exam.WebApi.MySql.csproj", "{D20B2C44-4853-483F-89A2-82BCC1981CE6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{061A19F9-8E96-496B-864D-4971D11B8276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{061A19F9-8E96-496B-864D-4971D11B8276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{061A19F9-8E96-496B-864D-4971D11B8276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{061A19F9-8E96-496B-864D-4971D11B8276}.Release|Any CPU.Build.0 = Release|Any CPU
+		{144D73FC-D500-4EEB-9E70-40599E96672E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{144D73FC-D500-4EEB-9E70-40599E96672E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{144D73FC-D500-4EEB-9E70-40599E96672E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{144D73FC-D500-4EEB-9E70-40599E96672E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B76C793-A454-467B-9DB8-8AA53FE6CD51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B76C793-A454-467B-9DB8-8AA53FE6CD51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B76C793-A454-467B-9DB8-8AA53FE6CD51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B76C793-A454-467B-9DB8-8AA53FE6CD51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D20B2C44-4853-483F-89A2-82BCC1981CE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D20B2C44-4853-483F-89A2-82BCC1981CE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D20B2C44-4853-483F-89A2-82BCC1981CE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D20B2C44-4853-483F-89A2-82BCC1981CE6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {537CDB53-F567-41EA-B401-B6474B0F6040}
+	EndGlobalSection
+EndGlobal
