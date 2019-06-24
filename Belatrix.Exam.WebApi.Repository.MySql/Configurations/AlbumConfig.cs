@@ -4,18 +4,18 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
 {
-    public class AlbumConfig : IEntityTypeConfiguration<Album>
+    internal class AlbumConfig : IEntityTypeConfiguration<Album>
     {
         public void Configure(EntityTypeBuilder<Album> builder)
         {
             builder
                 .ToTable("album")
                 .HasKey(x => x.AlbumId)
-                .HasName("pk_album_id");
+                .HasName("album_id_pkey");
 
             builder
                 .HasIndex(x => x.ArtistId)
-                .HasName("idx_fk_artist_id");
+                .HasName("artist_id_idx");
 
             builder
                 .Property(x => x.AlbumId)
@@ -25,12 +25,13 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
             builder
                 .Property(x => x.Title)
                 .HasColumnName("title")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(160)
                 .IsRequired();
 
             builder
                 .Property(x => x.ArtistId)
+                .HasColumnName("artist_id")
                 .IsRequired();
 
             builder
@@ -38,7 +39,7 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
                 .WithMany(x => x.Albums)
                 .HasForeignKey(x => x.ArtistId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_artist_album");
+                .HasConstraintName("artist_album_fk");
         }
     }
 }

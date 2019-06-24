@@ -7,22 +7,22 @@ using System.Text;
 
 namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
 {
-    public class InvoiceLineConfig : IEntityTypeConfiguration<InvoiceLine>
+    internal class InvoiceLineConfig : IEntityTypeConfiguration<InvoiceLine>
     {
         public void Configure(EntityTypeBuilder<InvoiceLine> builder)
         {
             builder
                 .ToTable("invoice_line")
                 .HasKey(x => x.InvoiceLineId)
-                .HasName("pk_invoice_line_id");
+                .HasName("invoice_line_id_pkey");
 
             builder
                 .HasIndex(x => x.InvoiceId)
-                .HasName("idx_fk_invoice_id");
+                .HasName("invoice_id_idx");
 
             builder
-                .HasIndex(x => x.Track)
-                .HasName("idx_fk_track_id");
+                .HasIndex(x => x.TrackId)
+                .HasName("track_id_idx");
 
             builder
                 .Property(x => x.InvoiceLineId)
@@ -55,14 +55,14 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
                 .WithMany(x => x.InvoiceLines)
                 .HasForeignKey(x => x.InvoiceId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_invoice_invoice_lines");
+                .HasConstraintName("invoice__invoice_lines__fk");
 
             builder
                 .HasOne(x => x.Track)
                 .WithMany(x => x.InvoiceLines)
                 .HasForeignKey(x => x.TrackId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_track_invoice_lines");
+                .HasConstraintName("track__invoice_lines__fk");
         }
     }
 }

@@ -7,26 +7,26 @@ using System.Text;
 
 namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
 {
-    public class TrackConfig : IEntityTypeConfiguration<Track>
+    internal class TrackConfig : IEntityTypeConfiguration<Track>
     {
         public void Configure(EntityTypeBuilder<Track> builder)
         {
             builder
                 .ToTable("track")
                 .HasKey(x => x.TrackId)
-                .HasName("pk_track_id");
+                .HasName("track_id_pkey");
 
             builder
                 .HasIndex(x => x.AlbumId)
-                .HasName("idx_fk_album_id");
+                .HasName("album_id_idx");
 
             builder
                 .HasIndex(x => x.MediaTypeId)
-                .HasName("idx_fk_media_type_id");
+                .HasName("media_type_id_idx");
 
             builder
                 .HasIndex(x => x.GenreId)
-                .HasName("idx_fk_genre_id");
+                .HasName("genre_id_idx");
 
             builder
                 .Property(x => x.TrackId)
@@ -36,7 +36,7 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
             builder
                 .Property(x => x.Name)
                 .HasColumnName("name")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(200)
                 .IsRequired();
 
@@ -56,7 +56,7 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
             builder
                 .Property(x => x.Composer)
                 .HasColumnName("composer")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(220);
 
             builder
@@ -79,35 +79,35 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
                 .WithOne(x => x.Track)
                 .HasForeignKey(x => x.TrackId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_playlist_tracks_track");
+                .HasConstraintName("playlist_tracks__track__fk");
 
             builder
                 .HasOne(x => x.MediaType)
                 .WithMany(x => x.Tracks)
                 .HasForeignKey(x => x.MediaTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_media_type_tracks");
+                .HasConstraintName("media_type__tracks__fk");
 
             builder
                 .HasOne(x => x.Genre)
                 .WithMany(x => x.Tracks)
                 .HasForeignKey(x => x.GenreId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_genre_tracks");
+                .HasConstraintName("genre_tracks_fk");
 
             builder
                 .HasOne(x => x.Album)
                 .WithMany(x => x.Tracks)
                 .HasForeignKey(x => x.AlbumId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_album_tracks");
+                .HasConstraintName("album_tracks_fk");
 
             builder
                 .HasMany(x => x.InvoiceLines)
                 .WithOne(x => x.Track)
                 .HasForeignKey(x => x.TrackId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_invoice_lines_track");
+                .HasConstraintName("invoice_lines__track__fk");
         }
     }
 }

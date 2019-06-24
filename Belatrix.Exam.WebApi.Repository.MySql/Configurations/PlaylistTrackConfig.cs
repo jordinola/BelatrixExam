@@ -7,19 +7,14 @@ using System.Text;
 
 namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
 {
-    public class PlaylistTrackConfig : IEntityTypeConfiguration<PlaylistTrack>
+    internal class PlaylistTrackConfig : IEntityTypeConfiguration<PlaylistTrack>
     {
         public void Configure(EntityTypeBuilder<PlaylistTrack> builder)
         {
             builder
                 .ToTable("playlist_track")
-                .HasKey(x => x.PlaylistId)
-                .HasName("playlist_id");
-
-            builder
-                .ToTable("playlist_track")
-                .HasKey(x => x.TrackId)
-                .HasName("track_id");
+                .HasKey(x => new { x.PlaylistId, x.TrackId })
+                .HasName("playlist_id__track_id__pkey");
 
             builder
                 .Property(x => x.PlaylistId)
@@ -34,14 +29,14 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
                 .WithMany(x => x.PlaylistTracks)
                 .HasForeignKey(x => x.PlaylistId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasForeignKey("fk_playlist_playlist_tracks");
+                .HasConstraintName("playlist__playlist_tracks__fk");
 
             builder
                 .HasOne(x => x.Track)
                 .WithMany(x => x.PlaylistTracks)
                 .HasForeignKey(x => x.TrackId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasForeignKey("fk_track_playlist_tracks");
+                .HasConstraintName("track__playlist_tracks__fk");
         }
     }
 }

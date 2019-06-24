@@ -7,14 +7,14 @@ using System.Text;
 
 namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
 {
-    public class MediaTypeConfig : IEntityTypeConfiguration<MediaType>
+    internal class MediaTypeConfig : IEntityTypeConfiguration<MediaType>
     {
         public void Configure(EntityTypeBuilder<MediaType> builder)
         {
             builder
                 .ToTable("media_type")
                 .HasKey(x => x.MediaTypeId)
-                .HasName("pk_media_type_id");
+                .HasName("media_type_id_pkey");
 
             builder
                 .Property(x => x.MediaTypeId)
@@ -24,7 +24,7 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
             builder
                 .Property(x => x.Name)
                 .HasColumnName("name")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(120);
 
             builder
@@ -32,7 +32,7 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
                 .WithOne(x => x.MediaType)
                 .HasForeignKey(x => x.MediaTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_tracks_media_type");
+                .HasConstraintName("tracks__media_type__fk");
         }
     }
 }

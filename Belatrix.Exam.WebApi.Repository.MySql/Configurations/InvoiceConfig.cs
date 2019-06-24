@@ -7,18 +7,18 @@ using System.Text;
 
 namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
 {
-    public class InvoiceConfig : IEntityTypeConfiguration<Invoice>
+    internal class InvoiceConfig : IEntityTypeConfiguration<Invoice>
     {
         public void Configure(EntityTypeBuilder<Invoice> builder)
         {
             builder
                 .ToTable("invoice")
                 .HasKey(x => x.InvoiceId)
-                .HasName("pk_invoice_id");
+                .HasName("invoice_id_pkey");
 
             builder
                 .HasIndex(x => x.CustomerId)
-                .HasName("idx_fk_customer_id");
+                .HasName("customer_id_idx");
 
             builder
                 .Property(x => x.InvoiceId)
@@ -38,31 +38,31 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
             builder
                 .Property(x => x.BillingAddress)
                 .HasColumnName("billing_address")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(70);
 
             builder
                 .Property(x => x.BillingCity)
                 .HasColumnName("billing_city")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(40);
 
             builder
                 .Property(x => x.BillingState)
                 .HasColumnName("billing_state")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(40);
 
             builder
                 .Property(x => x.BillingCountry)
                 .HasColumnName("billing_country")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(40);
 
             builder
                 .Property(x => x.BillingPostalCode)
                 .HasColumnName("billing_postal_code")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(10);
 
             builder
@@ -76,14 +76,14 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
                 .WithMany(x => x.Invoices)
                 .HasForeignKey(x => x.CustomerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_customer_invoices");
+                .HasConstraintName("customer_invoices_fk");
 
             builder
                 .HasMany(x => x.InvoiceLines)
                 .WithOne(x => x.Invoice)
                 .HasForeignKey(x => x.InvoiceId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_invoice_lines_invoice");
+                .HasConstraintName("invoice_lines__invoice__fk");
         }
     }
 }

@@ -7,14 +7,14 @@ using System.Text;
 
 namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
 {
-    public class GenreConfig : IEntityTypeConfiguration<Genre>
+    internal class GenreConfig : IEntityTypeConfiguration<Genre>
     {
         public void Configure(EntityTypeBuilder<Genre> builder)
         {
             builder
                 .ToTable("genre")
                 .HasKey(x => x.GenreId)
-                .HasName("pk_genre_id");
+                .HasName("genre_id_pkey");
 
             builder
                 .Property(x => x.GenreId)
@@ -24,7 +24,7 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
             builder
                 .Property(x => x.Name)
                 .HasColumnName("name")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(120);
 
             builder
@@ -32,7 +32,7 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
                 .WithOne(x => x.Genre)
                 .HasForeignKey(x => x.GenreId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_tracks_genre");
+                .HasConstraintName("tracks_genre_fk");
         }
     }
 }

@@ -7,18 +7,18 @@ using System.Text;
 
 namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
 {
-    public class EmployeeConfig : IEntityTypeConfiguration<Employee>
+    internal class EmployeeConfig : IEntityTypeConfiguration<Employee>
     {
         public void Configure(EntityTypeBuilder<Employee> builder)
         {
             builder
                 .ToTable("employee")
                 .HasKey(x => x.EmployeeId)
-                .HasName("pk_employee_id");
+                .HasName("employee_id_pkey");
 
             builder
                 .HasIndex(x => x.ReportsTo)
-                .HasName("idx_fk_reports_to");
+                .HasName("reports_to_idx");
 
             builder
                 .Property(x => x.EmployeeId)
@@ -28,21 +28,21 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
             builder
                 .Property(x => x.FirstName)
                 .HasColumnName("first_name")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(20)
                 .IsRequired();
 
             builder
                 .Property(x => x.LastName)
                 .HasColumnName("last_name")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(20)
                 .IsRequired();
 
             builder
                 .Property(x => x.Title)
                 .HasColumnName("title")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(30);
 
             builder
@@ -60,49 +60,49 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
             builder
                 .Property(x => x.Address)
                 .HasColumnName("address")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(70);
 
             builder
                 .Property(x => x.City)
                 .HasColumnName("city")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(40);
 
             builder
                 .Property(x => x.State)
                 .HasColumnName("state")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(40);
 
             builder
                 .Property(x => x.Country)
                 .HasColumnName("country")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(40);
 
             builder
                 .Property(x => x.PostalCode)
                 .HasColumnName("postal_code")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(10);
 
             builder
                 .Property(x => x.Phone)
                 .HasColumnName("phone")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(24);
 
             builder
                 .Property(x => x.Fax)
                 .HasColumnName("fax")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(24);
 
             builder
                 .Property(x => x.Email)
                 .HasColumnName("email")
-                .HasColumnType("nvarchar")
+                .HasColumnType("varchar")
                 .HasMaxLength(60);
 
             builder
@@ -110,21 +110,21 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
                 .WithMany(x => x.Employees)
                 .HasForeignKey(x => x.ReportsTo)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_leader_employees");
+                .HasConstraintName("leader_employees_fk");
 
             builder
                 .HasMany(x => x.Employees)
                 .WithOne(x => x.Leader)
                 .HasForeignKey(x => x.ReportsTo)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_employees_leader");
+                .HasConstraintName("employees_leader_fk");
 
             builder
                 .HasMany(x => x.Customers)
                 .WithOne(x => x.SupportEmployee)
                 .HasForeignKey(x => x.SupportRepId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_customers_support_employee");
+                .HasConstraintName("customers__support_employee__fk");
         }
     }
 }
