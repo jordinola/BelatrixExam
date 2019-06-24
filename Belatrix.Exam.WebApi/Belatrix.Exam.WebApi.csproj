@@ -14,4 +14,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Belatrix.Exam.WebApi.Repository.MySql\Belatrix.Exam.WebApi.Repository.MySql.csproj" />
+  </ItemGroup>
+
 </Project>
