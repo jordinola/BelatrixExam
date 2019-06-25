@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Belatrix.Exam.WebApi.Requests
+namespace Belatrix.Exam.WebApi.Responses.Artist
 {
-    public class AlbumRequest
+    public class ArtistResponse
     {
-        public int AlbumId { get; set; }
-        public string Title { get; set; }
         public int ArtistId { get; set; }
+        public string Name { get; set; }
+
     }
 }

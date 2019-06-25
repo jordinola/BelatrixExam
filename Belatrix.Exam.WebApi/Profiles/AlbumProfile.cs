@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Belatrix.Exam.WebApi.Models;
-using Belatrix.Exam.WebApi.Requests;
-using Belatrix.Exam.WebApi.ViewModels;
+using Belatrix.Exam.WebApi.Requests.Album;
+using Belatrix.Exam.WebApi.Responses.Album;
 
 namespace Belatrix.Exam.WebApi.Profiles
 {
@@ -9,7 +9,8 @@ namespace Belatrix.Exam.WebApi.Profiles
     {
         public AlbumProfile()
         {
-            CreateMap<AlbumRequest, Album>();
+            CreateMap<AlbumPostRequest, Album>();
+            CreateMap<AlbumPutRequest, Album>();
 
             CreateMap<Album, AlbumResponse>();
         }

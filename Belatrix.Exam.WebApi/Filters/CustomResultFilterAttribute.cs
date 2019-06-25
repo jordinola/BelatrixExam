@@ -1,10 +1,5 @@
-﻿using AutoMapper;
-using Belatrix.Exam.WebApi.ViewModels;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Belatrix.Exam.WebApi.Filters

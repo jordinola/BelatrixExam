@@ -2,8 +2,8 @@
 using Belatrix.Exam.WebApi.Filters;
 using Belatrix.Exam.WebApi.Models;
 using Belatrix.Exam.WebApi.Repository;
-using Belatrix.Exam.WebApi.Requests;
-using Belatrix.Exam.WebApi.ViewModels;
+using Belatrix.Exam.WebApi.Requests.Album;
+using Belatrix.Exam.WebApi.Responses.Album;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -31,16 +31,17 @@ namespace Belatrix.Exam.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<AlbumResponse>> PostAlbum(AlbumRequest album)
+        public async Task<ActionResult<AlbumResponse>> PostAlbum(AlbumPostRequest request)
         {
-            await _repository.Create(_mapper.Map<Album>(album));
+            var album = _mapper.Map<Album>(request);
+            await _repository.Create(album);
             return Ok(album.AlbumId);
         }
 
         [HttpPut]
-        public async Task<ActionResult<bool>> PutCustomer(AlbumRequest album)
+        public async Task<ActionResult<bool>> PutCustomer(AlbumPutRequest request)
         {
-            return Ok(await _repository.Update(_mapper.Map<Album>(album)));
+            return Ok(await _repository.Update(_mapper.Map<Album>(request)));
         }
 
         [HttpDelete]
