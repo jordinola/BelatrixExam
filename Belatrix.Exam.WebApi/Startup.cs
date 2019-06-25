@@ -1,19 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
 using Belatrix.Exam.WebApi.Models;
+using Belatrix.Exam.WebApi.Profiles;
 using Belatrix.Exam.WebApi.Repository;
-using Belatrix.Exam.WebApi.Repository.MySql;
+using Belatrix.Exam.WebApi.Repository.PostgreSql;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace Belatrix.Exam.WebApi
@@ -32,10 +27,10 @@ namespace Belatrix.Exam.WebApi
         {
             //Mapper.Initialize(cfg =>
             //{
-            //    cfg.AddProfile<CustomerProfile>();
+            //    cfg.AddProfile<AlbumProfile>();
             //});
-            
-            //services.AddAutoMapper(typeof(CustomerProfile).Assembly);
+
+            services.AddAutoMapper(typeof(AlbumProfile).Assembly);
 
             services.AddControllers()
                 .AddNewtonsoftJson();

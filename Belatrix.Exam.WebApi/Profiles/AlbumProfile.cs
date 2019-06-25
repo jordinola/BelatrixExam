@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using Belatrix.Exam.WebApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Belatrix.Exam.WebApi.Requests;
+using Belatrix.Exam.WebApi.ViewModels;
 
 namespace Belatrix.Exam.WebApi.Profiles
 {
@@ -11,6 +9,9 @@ namespace Belatrix.Exam.WebApi.Profiles
     {
         public AlbumProfile()
         {
+            CreateMap<AlbumRequest, Album>();
+
+            CreateMap<Album, AlbumResponse>();
         }
     }
 }

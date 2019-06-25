@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
+namespace Belatrix.Exam.WebApi.Repository.PostgreSql.Configurations
 {
     internal class InvoiceLineConfig : IEntityTypeConfiguration<InvoiceLine>
     {

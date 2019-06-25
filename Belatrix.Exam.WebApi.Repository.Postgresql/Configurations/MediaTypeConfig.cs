@@ -5,20 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
+namespace Belatrix.Exam.WebApi.Repository.PostgreSql.Configurations
 {
-    internal class GenreConfig : IEntityTypeConfiguration<Genre>
+    internal class MediaTypeConfig : IEntityTypeConfiguration<MediaType>
     {
-        public void Configure(EntityTypeBuilder<Genre> builder)
+        public void Configure(EntityTypeBuilder<MediaType> builder)
         {
             builder
-                .ToTable("genre")
-                .HasKey(x => x.GenreId)
-                .HasName("genre_id_pkey");
+                .ToTable("media_type")
+                .HasKey(x => x.MediaTypeId)
+                .HasName("media_type_id_pkey");
 
             builder
-                .Property(x => x.GenreId)
-                .HasColumnName("genre_id")
+                .Property(x => x.MediaTypeId)
+                .HasColumnName("media_type_id")
                 .ValueGeneratedOnAdd();
 
             builder
@@ -29,10 +29,10 @@ namespace Belatrix.Exam.WebApi.Repository.MySql.Configurations
 
             builder
                 .HasMany(x => x.Tracks)
-                .WithOne(x => x.Genre)
-                .HasForeignKey(x => x.GenreId)
+                .WithOne(x => x.MediaType)
+                .HasForeignKey(x => x.MediaTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("tracks_genre_fk");
+                .HasConstraintName("tracks__media_type__fk");
         }
     }
 }

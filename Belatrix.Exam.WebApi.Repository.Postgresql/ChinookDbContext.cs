@@ -1,11 +1,8 @@
 ﻿using Belatrix.Exam.WebApi.Models;
-using Belatrix.Exam.WebApi.Repository.MySql.Configurations;
+using Belatrix.Exam.WebApi.Repository.PostgreSql.Configurations;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Belatrix.Exam.WebApi.Repository.MySql
+namespace Belatrix.Exam.WebApi.Repository.PostgreSql
 {
     public class ChinookDbContext : DbContext
     {

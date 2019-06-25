@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Belatrix.Exam.WebApi.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
@@ -20,8 +21,6 @@ namespace Belatrix.Exam.WebApi.Filters
                 await next();
                 return;
             }
-
-            //resultFromAction.Value = Mapper.Map<IEnumerable<Customer>>(resultFromAction.Value);
 
             await next();
         }

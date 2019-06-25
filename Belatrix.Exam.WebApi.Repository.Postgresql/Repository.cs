@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Belatrix.Exam.WebApi.Repository.MySql
+namespace Belatrix.Exam.WebApi.Repository.PostgreSql
 {
     public class Repository<T> : IRepository<T> where T : class
     {
