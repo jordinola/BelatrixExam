@@ -42,6 +42,12 @@ namespace Belatrix.Exam.WebApi
             services.AddTransient<IRepository<Customer>, Repository<Customer>>();
             services.AddTransient<IRepository<Employee>, Repository<Employee>>();
             services.AddTransient<IRepository<Genre>, Repository<Genre>>();
+            services.AddTransient<IRepository<Invoice>, Repository<Invoice>>();
+            services.AddTransient<IRepository<InvoiceLine>, Repository<InvoiceLine>>();
+            services.AddTransient<IRepository<MediaType>, Repository<MediaType>>();
+            services.AddTransient<IRepository<Playlist>, Repository<Playlist>>();
+            services.AddTransient<IRepository<PlaylistTrack>, Repository<PlaylistTrack>>();
+            services.AddTransient<IRepository<Track>, Repository<Track>>();
 
             services.AddSwaggerGen(c =>
             {
