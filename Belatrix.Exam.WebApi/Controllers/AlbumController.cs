@@ -2,8 +2,8 @@
 using Belatrix.Exam.WebApi.Filters;
 using Belatrix.Exam.WebApi.Models;
 using Belatrix.Exam.WebApi.Repository;
-using Belatrix.Exam.WebApi.Requests.Album;
-using Belatrix.Exam.WebApi.Responses.Album;
+using Belatrix.Exam.WebApi.ViewModels.Album.Requests;
+using Belatrix.Exam.WebApi.ViewModels.Album.Responses;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;

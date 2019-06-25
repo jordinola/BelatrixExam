@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Belatrix.Exam.WebApi.Requests.Employee
+namespace Belatrix.Exam.WebApi.ViewModels.Employee.Responses
 {
-    public class EmployeePostRequest
+    public class EmployeeResponse
     {
+        public int EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Title { get; set; }

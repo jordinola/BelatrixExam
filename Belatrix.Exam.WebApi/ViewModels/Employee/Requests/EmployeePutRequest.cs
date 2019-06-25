@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Belatrix.Exam.WebApi.Responses.Employee
+namespace Belatrix.Exam.WebApi.ViewModels.Employee.Requests
 {
-    public class EmployeeResponse
+    public class EmployeePutRequest
     {
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }

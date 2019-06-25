@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Belatrix.Exam.WebApi.Requests.Customer
+namespace Belatrix.Exam.WebApi.ViewModels.Customer.Requests
 {
     public class CustomerPostRequest
     {

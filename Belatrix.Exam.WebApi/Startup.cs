@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace Belatrix.Exam.WebApi
 {
@@ -25,12 +26,7 @@ namespace Belatrix.Exam.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Mapper.Initialize(cfg =>
-            //{
-            //    cfg.AddProfile<AlbumProfile>();
-            //});
-
-            services.AddAutoMapper(typeof(AlbumProfile).Assembly);
+            services.AddAutoMapper(new Assembly[] { typeof(AlbumProfile).GetTypeInfo().Assembly });
 
             services.AddControllers()
                 .AddNewtonsoftJson();
@@ -42,7 +38,10 @@ namespace Belatrix.Exam.WebApi
                .BuildServiceProvider();
 
             services.AddTransient<IRepository<Album>, Repository<Album>>();
+            services.AddTransient<IRepository<Artist>, Repository<Artist>>();
             services.AddTransient<IRepository<Customer>, Repository<Customer>>();
+            services.AddTransient<IRepository<Employee>, Repository<Employee>>();
+            services.AddTransient<IRepository<Genre>, Repository<Genre>>();
 
             services.AddSwaggerGen(c =>
             {

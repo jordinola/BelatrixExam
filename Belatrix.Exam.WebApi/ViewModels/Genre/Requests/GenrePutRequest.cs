@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Belatrix.Exam.WebApi.Requests.Artist
+namespace Belatrix.Exam.WebApi.ViewModels.Genre.Requests
 {
-    public class ArtistPutRequest
+    public class GenrePutRequest
     {
-        public int ArtistId { get; set; }
+        public int GenreId { get; set; }
         public string Name { get; set; }
     }
 }
