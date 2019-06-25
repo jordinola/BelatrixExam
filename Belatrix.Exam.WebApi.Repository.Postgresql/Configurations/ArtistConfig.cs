@@ -32,7 +32,7 @@ namespace Belatrix.Exam.WebApi.Repository.PostgreSql.Configurations
                 .WithOne(x => x.Artist)
                 .HasForeignKey(x => x.AlbumId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("artist_album_fk");
+                .HasConstraintName("album_artist_fk");
         }
     }
 }
