@@ -1,16 +1,19 @@
 using AutoMapper;
+using Belatrix.Exam.WebApi.Identity.Data;
 using Belatrix.Exam.WebApi.Models;
 using Belatrix.Exam.WebApi.Profiles;
 using Belatrix.Exam.WebApi.Repository;
 using Belatrix.Exam.WebApi.Repository.PostgreSql;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Belatrix.Exam.WebApi
 {
@@ -36,6 +39,16 @@ namespace Belatrix.Exam.WebApi
                 opt => opt.UseNpgsql(Configuration.GetConnectionString("postgresql"),
                 b => b.MigrationsAssembly("Belatrix.Exam.WebApi")))
                .BuildServiceProvider();
+
+            services.AddEntityFrameworkNpgsql()
+               .AddDbContextPool<ApplicationDbContext>(
+                opt => opt.UseNpgsql(Configuration.GetConnectionString("postgresql"),
+                b => b.MigrationsAssembly("Belatrix.Exam.WebApi")))
+               .BuildServiceProvider();
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddTransient<IRepository<Album>, Repository<Album>>();
             services.AddTransient<IRepository<Artist>, Repository<Artist>>();
@@ -72,6 +85,11 @@ namespace Belatrix.Exam.WebApi
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            SeedData.Initialize(app.ApplicationServices
+                .GetRequiredService<IServiceScopeFactory>()
+                .CreateScope()
+                .ServiceProvider);
 
             app.UseHttpsRedirection();
 

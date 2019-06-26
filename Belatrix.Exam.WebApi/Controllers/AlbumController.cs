@@ -4,6 +4,7 @@ using Belatrix.Exam.WebApi.Models;
 using Belatrix.Exam.WebApi.Repository;
 using Belatrix.Exam.WebApi.ViewModels.Album.Requests;
 using Belatrix.Exam.WebApi.ViewModels.Album.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
